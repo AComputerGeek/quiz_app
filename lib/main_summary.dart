@@ -89,9 +89,7 @@ class MainSummary extends StatelessWidget {
                               currentColor(selectedAnswer, questions, question),
                           radius: 18,
                           child: Text(
-                            (int.parse(allQuestions(questions)
-                                        .indexOf(question.text)
-                                        .toString()) +
+                            ((allQuestions(questions).indexOf(question.text)) +
                                     1)
                                 .toString(),
                             style: const TextStyle(
