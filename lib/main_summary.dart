@@ -57,7 +57,7 @@ class MainSummary extends StatelessWidget {
         if (selectedAnswer[i] == question.answers[0]) {
           currentColor = const Color.fromARGB(255, 135, 255, 183);
         } else {
-          currentColor = const Color.fromARGB(255, 255, 130, 130);
+          currentColor = Color.fromARGB(255, 255, 100, 100);
         }
       }
     }
