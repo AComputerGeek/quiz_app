@@ -2,13 +2,6 @@
 
 A new Flutter project.
 
-Demo:
-
-https://github.com/AComputerGeek/quiz_app/assets/107828537/488611a4-94a9-4b55-8452-a6157095c201
-
-
-
-
 ## Getting Started
 
 This project is a starting point for a Flutter application.
