@@ -24,7 +24,7 @@ class _QuizState extends State<Quiz> {
   final List<String> selectedAnswer = [];
   var results = false;
   var howManyQuestions = questions.length;
-  var correctAnswers = 0;
+  var howManyCorrectAnswers = 0;
 
   // Switch screens
   void switchScreen() {
@@ -38,17 +38,17 @@ class _QuizState extends State<Quiz> {
     selectedAnswer.add(answer);
 
     if (selectedAnswer.length == questions.length) {
+      results = true;
+
       for (var i = 0; i < questions.length; i++) {
         if (questions[i].answers[0] == selectedAnswer[i]) {
-          correctAnswers++;
+          howManyCorrectAnswers++;
         }
       }
 
-      results = true;
-
       setState(() {
         ResultsScreen(
-            selectedAnswer, howManyQuestions, correctAnswers, restart);
+            selectedAnswer, howManyQuestions, howManyCorrectAnswers, restart);
         // selectedAnswer.clear();
       });
     }
@@ -59,7 +59,7 @@ class _QuizState extends State<Quiz> {
     setState(() {
       results = false;
       selectedAnswer.clear();
-      correctAnswers = 0;
+      howManyCorrectAnswers = 0;
       activeScreen = 'start_screen';
     });
   }
@@ -73,7 +73,7 @@ class _QuizState extends State<Quiz> {
           decoration: const BoxDecoration(
             gradient: LinearGradient(
               colors: [
-                Color.fromARGB(255, 119, 0, 255),
+                Color.fromARGB(255, 187, 127, 255),
                 Color.fromARGB(255, 47, 0, 129)
               ],
               begin: Alignment.topLeft,
@@ -82,10 +82,10 @@ class _QuizState extends State<Quiz> {
           ),
           child: (activeScreen == 'start_screen')
               ? StartScreen(switchScreen)
-              : (!results && activeScreen == 'questions_screen')
+              : (!results && (activeScreen == 'questions_screen'))
                   ? QuestionsScreen(chosenAnswer)
                   : ResultsScreen(selectedAnswer, howManyQuestions,
-                      correctAnswers, restart),
+                      howManyCorrectAnswers, restart),
         ),
       ),
     );

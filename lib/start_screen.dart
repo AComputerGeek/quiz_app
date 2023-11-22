@@ -38,15 +38,21 @@ class StartScreen extends StatelessWidget {
           OutlinedButton.icon(
             onPressed: startQuiz,
             style: OutlinedButton.styleFrom(
+              shape: RoundedRectangleBorder(
+                borderRadius: BorderRadius.circular(12),
+              ),
               backgroundColor: Colors.white,
               foregroundColor: Colors.purple,
-              padding: const EdgeInsets.all(15),
+              padding: const EdgeInsets.fromLTRB(15, 18, 20, 18),
             ),
-            icon: const Icon(Icons.arrow_circle_right_outlined),
+            icon: const Icon(
+              Icons.start,
+              size: 27,
+            ),
             label: Text(
               "Start Quiz",
               style: GoogleFonts.roboto(
-                fontSize: 18,
+                fontSize: 21,
                 fontWeight: FontWeight.w700,
               ),
             ),

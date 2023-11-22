@@ -47,7 +47,7 @@ class _QuestionsScreenState extends State<QuestionsScreen> {
               Text(
                 questions[currentQuestionIndex].text,
                 style: GoogleFonts.roboto(
-                  color: const Color.fromARGB(255, 222, 198, 255),
+                  color: const Color.fromARGB(255, 237, 224, 255),
                   fontSize: 24,
                   fontWeight: FontWeight.w400,
                 ),

@@ -11,8 +11,8 @@ class MainSummary extends StatelessWidget {
 
   final List<String> selectedAnswer;
 
-// Showing user's answers
-  String currentAnswer(List<String> selectedAnswer,
+  // Showing user's answers
+  String currentUserAnswer(List<String> selectedAnswer,
       List<QuizQuestion> questions, QuizQuestion question) {
     for (var i = 0; i < questions.length; i++) {
       if (questions[i].text == question.text) {
@@ -37,7 +37,7 @@ class MainSummary extends StatelessWidget {
   }
 
   // All questions
-  List<String> allQuestions(List questions) {
+  List<String> allQuestionsList(List questions) {
     List<String> questionsList = [];
 
     for (var i = 0; i < questions.length; i++) {
@@ -48,16 +48,16 @@ class MainSummary extends StatelessWidget {
   }
 
   // Determining correct and wrong answers by colors
-  Color currentColor(List<String> selectedAnswer, List<QuizQuestion> questions,
-      QuizQuestion question) {
+  Color questionNumberColor(List<String> selectedAnswer,
+      List<QuizQuestion> questions, QuizQuestion question) {
     Color currentColor = Colors.white;
 
     for (var i = 0; i < questions.length; i++) {
       if (questions[i].text == question.text) {
         if (selectedAnswer[i] == question.answers[0]) {
-          currentColor = const Color.fromARGB(255, 135, 255, 183);
+          currentColor = const Color.fromARGB(255, 88, 255, 155);
         } else {
-          currentColor = Color.fromARGB(255, 255, 100, 100);
+          currentColor = const Color.fromARGB(255, 255, 91, 91);
         }
       }
     }
@@ -68,7 +68,7 @@ class MainSummary extends StatelessWidget {
   @override
   Widget build(context) {
     return SizedBox(
-      height: 450,
+      height: 400,
       child: SingleChildScrollView(
         child: Column(
           children: [
@@ -85,11 +85,12 @@ class MainSummary extends StatelessWidget {
                           horizontal: 15,
                         ),
                         child: CircleAvatar(
-                          backgroundColor:
-                              currentColor(selectedAnswer, questions, question),
+                          backgroundColor: questionNumberColor(
+                              selectedAnswer, questions, question),
                           radius: 18,
                           child: Text(
-                            ((allQuestions(questions).indexOf(question.text)) +
+                            ((allQuestionsList(questions)
+                                        .indexOf(question.text)) +
                                     1)
                                 .toString(),
                             style: const TextStyle(
@@ -113,7 +114,7 @@ class MainSummary extends StatelessWidget {
                                 question.text,
                                 style: GoogleFonts.roboto(
                                   color: Colors.white,
-                                  fontSize: 18,
+                                  fontSize: 15,
                                   fontWeight: FontWeight.w500,
                                 ),
                                 textAlign: TextAlign.left,
@@ -121,10 +122,10 @@ class MainSummary extends StatelessWidget {
                             ),
                             // User Answer
                             Text(
-                              currentAnswer(
+                              currentUserAnswer(
                                   selectedAnswer, questions, question),
                               style: GoogleFonts.roboto(
-                                color: Color.fromARGB(255, 255, 106, 205),
+                                color: const Color.fromARGB(255, 255, 106, 205),
                                 fontWeight: FontWeight.w600,
                               ),
                               textAlign: TextAlign.left,
@@ -133,8 +134,9 @@ class MainSummary extends StatelessWidget {
                             Text(
                               currentCorrectAnswer(),
                               style: GoogleFonts.roboto(
-                                color: const Color.fromARGB(255, 145, 255, 19),
+                                color: const Color.fromARGB(255, 88, 255, 155),
                                 fontWeight: FontWeight.w600,
+                                fontSize: 12,
                               ),
                               textAlign: TextAlign.left,
                             ),

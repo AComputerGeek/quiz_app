@@ -9,8 +9,11 @@ class QuizQuestion {
   final List<String> answers;
 
   List<String> getShuffledAnswers() {
-    final shuffledList = List.of(answers);
+    final List<String> shuffledList = List.of(answers);
     shuffledList.shuffle();
+
+    ////OR
+    // return List.of(answers).shuffle();
 
     return shuffledList;
   }

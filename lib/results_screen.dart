@@ -8,12 +8,12 @@ import 'package:quiz_app/main_summary.dart';
 
 class ResultsScreen extends StatelessWidget {
   const ResultsScreen(this.selectedAnswer, this.howManyQuestions,
-      this.correctAnswers, this.restart,
+      this.howManyCorrectAnswers, this.restart,
       {super.key});
 
   final List<String> selectedAnswer;
   final int howManyQuestions;
-  final int correctAnswers;
+  final int howManyCorrectAnswers;
   final void Function() restart;
 
   @override
@@ -28,7 +28,7 @@ class ResultsScreen extends StatelessWidget {
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
               Text(
-                '"You answered $correctAnswers out of $howManyQuestions questions correctly!"',
+                '"You answered $howManyCorrectAnswers out of $howManyQuestions questions correctly!"',
                 style: GoogleFonts.roboto(
                   color: const Color.fromARGB(255, 222, 198, 255),
                   fontSize: 22,
@@ -41,7 +41,7 @@ class ResultsScreen extends StatelessWidget {
               ),
               MainSummary(selectedAnswer),
               const SizedBox(
-                height: 40,
+                height: 50,
               ),
               Center(
                 child: OutlinedButton.icon(
@@ -50,6 +50,9 @@ class ResultsScreen extends StatelessWidget {
                     backgroundColor: Colors.white,
                     foregroundColor: Colors.purple,
                     padding: const EdgeInsets.all(15),
+                    shape: RoundedRectangleBorder(
+                      borderRadius: BorderRadius.circular(12),
+                    ),
                   ),
                   icon: const Icon(Icons.restart_alt_rounded),
                   label: Text(
